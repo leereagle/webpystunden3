@@ -1,0 +1,63 @@
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #3f6b99;
+}
+
+.navbar-brand > img {
+    display: inline;
+    height: 20px;
+    width: auto;
+    padding-right: 10px;
+    vertical-align: sub;
+}
+
+.form-signin-heading {
+    color: #444;
+}
+
+.form-signin {
+    background-color: #eeeeee;
+    padding: 15px 25px;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+textarea.form-control {
+    height: 84px;
+}
+
+.form-group {
+    margin-bottom: 0px;
+}
+
+[class*="col-"] {
+    margin-bottom: 15px;
+}
+
+.maintable {
+    margin: 0 0;
+}
+
+#toggle-all {
+    visibility: hidden;
+}
+
+.custom-span {
+    width: 328px;
+}
+
+.index-height p {
+    height: 70px;
+}
+
+.importpadding {
+    padding-left: 0;
+}
+
+.importpadding .col-lg-3{
+    padding-left: 0;
+}

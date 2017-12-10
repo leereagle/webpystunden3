@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %} - Arbeitnehmer{% endblock %}
+
+{% block content %}
+{% if arbeitnehmer %}
+    <div class="row maintable" id="maintable">
+        <div class="col-lg-12">
+            <h3>Arbeitnehmer bearbeiten</h3>
+        </div>
+        <div class="col-lg-12" id="stundenaufzeichnung">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Adresse</th>
+                    <th>PLZ</th>
+                    <th>Ort</th>
+                    <th>Land</th>
+                    <th>UID</th>
+                    <th>Bank</th>
+                    <th>IBAN</th>
+                    <th>BIC</th>
+                </tr>
+                {% for row in arbeitnehmer %}
+                <tr>
+                    <td><a href="{% url "arbeitnehmer" %}{{ row.id }}/">{{row.name}}</a></td>
+                    <td>{{row.adresse}}</td>
+                    <td>{{row.plz}}</td>
+                    <td>{{row.ort}}</td>
+                    <td>{{row.land}}</td>
+                    <td>{{row.uid}}</td>
+                    <td>{{row.bank_name}}</td>
+                    <td>{{row.bank_iban}}</td>
+                    <td>{{row.bank_bic}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div>
+                {% if arbeitnehmer.has_previous %}
+                    <a class="btn btn-default pages" href="?page={{ arbeitnehmer.previous_page_number }}#maintable"><i class="glyphicon glyphicon-backward"></i> zurück</a>
+                {% else %}
+                    <a class="btn disabled" href="javascript: void(0)"><i class="glyphicon glyphicon-backward"></i> zurück</a>
+                {% endif %}
+
+                Seite {{ arbeitnehmer.number }} von {{ arbeitnehmer.paginator.num_pages }}
+
+                {% if arbeitnehmer.has_next %}
+                    <a class="btn btn-default pages" href="?page={{ arbeitnehmer.next_page_number }}#maintable">weiter <i class="glyphicon glyphicon-forward"></i></a>
+                {% else %}
+                    <a class="btn disabled" href="javascript: void(0)">weiter <i class="glyphicon glyphicon-forward"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        Information: Derzeit sind keine Arbeitnehmer vorhanden.
+    </div>
+{% endif %}
+{% endblock %}

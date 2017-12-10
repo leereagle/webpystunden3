@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %} - Firmen{% endblock %}
+
+{% block content %}
+{% if firma %}
+    <div class="row maintable" id="maintable">
+        <div class="col-lg-12">
+            <h3>Firmen bearbeiten</h3>
+        </div>
+        <div class="col-lg-12" id="stundenaufzeichnung">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Firma</th>
+                        <th>Name</th>
+                        <th>Adresse</th>
+                        <th>PLZ</th>
+                        <th>Ort</th>
+                        <th>Land</th>
+                        <th>UID</th>
+                        <th>Stundensatz</th>
+                    </tr>
+                    {% for row in firma %}
+                    <tr>
+                        <td><a href="{% url "firma" %}{{ row.id }}/">{{row.firma}}</a></td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.adresse}}</td>
+                        <td>{{row.plz}}</td>
+                        <td>{{row.ort}}</td>
+                        <td>{{row.land}}</td>
+                        <td>{{row.uid}}</td>
+                        <td>{{row.stundensatz|default_if_none:"-"}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <div>
+                    {% if firma.has_previous %}
+                        <a class="btn btn-default pages" href="?page={{ firma.previous_page_number }}#maintable"><i class="glyphicon glyphicon-backward"></i> zurück</a>
+                    {% else %}
+                        <a class="btn disabled" href="javascript: void(0)"><i class="glyphicon glyphicon-backward"></i> zurück</a>
+                    {% endif %}
+
+                    Seite {{ firma.number }} von {{ firma.paginator.num_pages }}
+
+                    {% if firma.has_next %}
+                        <a class="btn btn-default pages" href="?page={{ firma.next_page_number }}#maintable">weiter <i class="glyphicon glyphicon-forward"></i></a>
+                    {% else %}
+                        <a class="btn disabled" href="javascript: void(0)">weiter <i class="glyphicon glyphicon-forward"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        Information: Derzeit sind keine Firmen vorhanden.
+    </div>
+{% endif %}
+{% endblock %}

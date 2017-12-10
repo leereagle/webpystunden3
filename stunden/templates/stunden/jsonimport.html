@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} - Import json{% endblock %}
+
+{% block content %}
+     <form class="form" action="{% url "jsonimport" %}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-2 importpadding">
+                <h3>JSON importieren</h3>
+                <br>
+                {% crispy form %}
+            </div>
+            <div class="col-lg-12">
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 alert alert-info">
+                <p>Wähle den Bereich aus, für den ein Backup importiert werden soll.</p>
+            </div>
+            <div class="col-lg-12">
+            </div>
+            <div class="col-lg-7 col-lg-offset-2 alert alert-warning">
+                <p>Importiere Stundenaufzeichnungen nur, wenn die dazugehörigen Arbeitnehmer und Firmen schon in webpystunden3 existieren.</p>
+            </div>
+            <div class="col-lg-12">
+            </div>
+            <div class="col-lg-3 col-lg-offset-2 alert alert-danger">
+                <p>Warnung: Alle Daten werden überschrieben!</p>
+            </div>
+            <div class="col-lg-12">
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 radios">
+                <label class="radio-inline">
+                    <input type="radio" name="json_import_select" id="json_import_select" value="json_import_select_stundenaufzeichnung" checked=""> Stundenaufzeichnung
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="json_import_select" id="json_import_select" value="json_import_select_firma"> Firma
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="json_import_select" id="json_import_select" value="json_import_select_arbeitnehmer"> Arbeitnehmer
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="json_import_select" id="json_import_select" value="json_import_select_rechnungsnummer"> Rechnungsnummer
+                </label>
+            </div>
+            <div class="col-lg-12">
+            </div>
+            <div class="col-lg-4 col-lg-offset-2">
+                <button class="btn btn-primary btn-block" type="submit" value="Daten von JSON Datei importieren"><i class="glyphicon glyphicon-arrow-up"></i> Daten von JSON Datei importieren</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} - Firma bearbeiten{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <form class="form" action="{% url "firma_bearbeiten" firma_id %}" method="post" enctype="multipart/form-data">
+                {% crispy form %}
+                <div class="col-lg-8">
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <button id="id_button" class="btn btn-primary btn-block" type="submit" name="firma_bearbeiten" value="Firma bearbeiten"><i class="glyphicon glyphicon-edit"></i> Firma bearbeiten</button>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <button id="id_button" class="btn btn-danger btn-block" type="submit" name="firma_loeschen" value="Firma löschen" onclick="javascript:return confirm('Eintrag wirklich löschen?');"><i class="glyphicon glyphicon-trash"></i> Firma löschen</button>
+                </div>
+                <div class="col-lg-4 col-lg-offset-8 alert alert-danger">
+                    <p>Wenn Einträge gelöscht werden, die in Stundenaufzeichnungen verwendet werden, dann werden diese Stundenaufzeichnungen auch gelöscht!</p>
+                </div>
+                <br/><br/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

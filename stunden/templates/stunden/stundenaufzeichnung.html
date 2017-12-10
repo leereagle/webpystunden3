@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %} - Stundenaufzeichnung{% endblock %}
+
+{% block content %}
+{% if stundenaufzeichnung %}
+    <div class="row maintable" id="maintable">
+        <div class="col-lg-12">
+            <h3>Stundenaufzeichnung bearbeiten</h3>
+        </div>
+        <div class="col-lg-12" id="stundenaufzeichnung">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr>
+
+                        <th>Datum</th>
+                        <th>Firma</th>
+                        <th>Startzeit</th>
+                        <th>Endzeit</th>
+                        <th>Arbeitnehmer</th>
+                        <th>Protokoll</th>
+                        <th>Bezahlt</th>
+                    </tr>
+                    {% for row in stundenaufzeichnung %}
+                    <tr>
+                        <td><a href="{% url "stundenaufzeichnung" %}{{ row.id }}/">{{row.datum}}</a></td>
+                        <td>{{row.firma}}</td>
+                        <td>{{row.startzeit|time:"H:i"}}</td>
+                        <td>{{row.endzeit|time:"H:i"}}</td>
+                        <td>{{row.arbeitnehmer}}</td>
+                        <td>{{row.protokoll}}</td>
+                        <td>{% if row.bezahlt %} Ja {% else %}  Nein {% endif %}</td>
+                    </tr>{% endfor %}
+                </table>
+                <div>
+                    {% if stundenaufzeichnung.has_previous %}
+                        <a class="btn btn-default pages" href="?page={{ stundenaufzeichnung.previous_page_number }}#maintable"><i class="glyphicon glyphicon-backward"></i> zurück</a>
+                    {% else %}
+                        <a class="btn disabled" href="javascript: void(0)"><i class="glyphicon glyphicon-backward"></i> zurück</a>
+                    {% endif %}
+
+                    Seite {{ stundenaufzeichnung.number }} von {{ stundenaufzeichnung.paginator.num_pages }}
+
+                    {% if stundenaufzeichnung.has_next %}
+                        <a class="btn btn-default pages" href="?page={{ stundenaufzeichnung.next_page_number }}#maintable">weiter <i class="glyphicon glyphicon-forward"></i></a>
+                    {% else %}
+                        <a class="btn disabled" href="javascript: void(0)">weiter <i class="glyphicon glyphicon-forward"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        Information: Derzeit sind keine Stundenaufzeichnung vorhanden.
+    </div>
+{% endif %}
+{% endblock %}

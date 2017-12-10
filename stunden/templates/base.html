@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>webpystunden3{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="{% static "css/jquery-ui.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "css/jquery-ui.theme.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "css/jquery-clockpicker.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "css/main.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "img/favicon.png" %}" rel="icon" type="image/png">
+</head>
+
+<body>
+    <div class="container-fluid">
+    {% block nav%}
+        <nav class="navbar navbar-default">
+          <div class="navbar-inner">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                </button>
+              <a class="navbar-brand" href="{% url "index" %}"><img src="{% static "img/favicon.png" %}" alt="webpystunden3">webpystunden3</a>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li><a href="{% url "index" %}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> Neu <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url "stundenaufzeichnung_neu" %}">Neue Stundenaufzeichnung</a></li>
+                      <li><a href="{% url "firma_neu" %}">Neue Firma</a></li>
+                      <li><a href="{% url "arbeitnehmer_neu" %}">Neuer Arbeitnehmer</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-edit"></i> Bearbeiten <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url "stundenaufzeichnung" %}">Stundenaufzeichnung bearbeiten</a></li>
+                      <li><a href="{% url "firma" %}">Firma bearbeiten</a></li>
+                      <li><a href="{% url "arbeitnehmer" %}">Arbeitnehmer bearbeiten</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-file"></i> Rechnung <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url "rechnung" %}">Rechnung Stundenbasierend</a></li>
+                      <li><a href="{% url "rechnungsumme" %}">Rechnung Gesamtsumme</a></li>
+                      <li><a href="{% url "rechnungsnummer" %}">Rechnungsnummern</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{% url "jsonexport" %}"><i class="glyphicon glyphicon-download-alt"></i> Export</a></li>
+                  <li><a href="{% url "jsonimport" %}"><i class="glyphicon glyphicon-arrow-up"></i> Import</a></li>
+                  <li><a href="{% url "einstellungen" %}"><i class="glyphicon glyphicon-cog"></i> Einstellungen</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                {% if user.is_staff %}
+                  <li><a href="{% url "admin:index" %}"><i class="glyphicon glyphicon-user"></i> Admin</a></li>
+                {% endif %}
+                  <li><a href="{% url "logout" %}"><i class="glyphicon glyphicon-off"></i> Abmelden</a></li>
+                </ul>
+              </div>
+          </div>
+      </nav>
+    {% endblock %}
+
+
+    {% block content %}{% endblock %}
+    </div>
+    <script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/datepicker-de.js" %}"></script>
+    <script src="{% static "js/jquery-clockpicker.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %} - API{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-7 col-lg-offset-2">
+            <h3>API Anleitung - Version v1</h3>
+            <h4>Generell</h4>
+            <p>Diese API liefert json und jsonp.</p>
+            <p>Nur GET Requests sind erlaubt.</p>
+            <p>Nur 150 Verbindungen zur API sind per Stunde erlaubt.</p>
+            <p>Nur der Eintrittspunkt ist ohne Api Key einsehbar.</p>
+            <h4>Im Browser</h4>
+            <p>Werte in &lt; &gt; ersetzen.</p>
+            <p>Eintrittspunkt: <code><i>&lt;domain&gt;</i>/api/v1/?format=json</code></p>
+            <p>Schema: <code><i>&lt;domain&gt;</i>/api/v1/stunden/schema/?username=<i>&lt;username&gt;</i>&amp;api_key=<i>&lt;api_key&gt;</i>&amp;format=json</code></p>
+            <p>Beispiel Daten: <code><i>&lt;domain&gt;</i>/api/v1/stunden/?username=<i>&lt;username&gt;</i>&amp;api_key=<i>&lt;api_key&gt;</i>&amp;format=json</code></p>
+            <p>Beispiel weitere Daten: <code><i>&lt;domain&gt;</i>/api/v1/stunden/?username=<i>&lt;username&gt;</i>&amp;api_key=<i>&lt;api_key&gt;</i>&amp;limit=20&amp;offset=20&amp;format=json</code></p>
+
+            <h4>Mit Python3</h4>
+            <p>Werte in &lt; &gt; ersetzen.</p>
+            <p>Beispiel:
+<pre>
+import urllib.request
+import json
+
+# Die jeweilige API URL
+url = "&lt;domain&gt;/api/v1/stunden/?username=&lt;username&gt;&amp;api_key=&lt;api_key&gt;"
+# Nach dem HTTP request wird das Ojekt eingelesen und vom Byte type zu einem UTF-8 String decodiert
+json_response = urllib.request.urlopen(url).read().decode("utf-8")
+# Der JSON String wird in ein Python dict umgewandelt
+data = json.loads(json_response)
+
+# Die Daten können nun ganz normal in Python behandelt werden
+first_object = data["objects"][0]
+
+print(first_object)
+</pre>
+            </p>
+
+            <h4>Mit curl</h4>
+            <p>Bei curl immer "\&amp;" in der URL benutzen!</p>
+            <p>Werte in &lt; &gt; ersetzen.</p>
+            <p>Eintrittspunkt: <code>curl <i>&lt;domain&gt;</i>/api/v1/</code></p>
+            <p>Schema: <code>curl <i>&lt;domain&gt;</i>/api/v1/stunden/schema/?username=<i>&lt;username&gt;</i>\&amp;api_key=<i>&lt;api_key&gt;</i>\&amp;format=json</code></p>
+            <p>Beispiel Daten: <code>curl <i>&lt;domain&gt;</i>/api/v1/stunden/?username=<i>&lt;username&gt;</i>\&amp;api_key=<i>&lt;api_key&gt;</i>\&amp;format=json</code></p>
+            <p>Beispiel weitere Daten: <code>curl <i>&lt;domain&gt;</i>/api/v1/stunden/?username=<i>&lt;username&gt;</i>\&amp;api_key=<i>&lt;api_key&gt;</i>\&amp;limit=20\&amp;offset=20\&amp;format=json</code></p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} - Export json{% endblock %}
+
+{% block content %}
+{% if stundenaufzeichnungen %}
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-2">
+            <h3>JSON exportieren</h3>
+            <p>Hier kann man ein Backup aller Daten als JSON Datei sichern.</p>
+        </div>
+        <div class="col-lg-12">
+        </div>
+        <div class="col-lg-4 col-lg-offset-2 alert alert-info">
+            <p>Wähle den Bereich aus, für den ein Backup erstellt werden soll.</p>
+        </div>
+        <div class="col-lg-12">
+        </div>
+        <div class="col-lg-5 col-lg-offset-2">
+            <form class="form" action="{% url "jsonexport" %}" method="post">{% csrf_token %}
+                <div class="radios">
+                    <label class="radio-inline">
+                        <input type="radio" name="json_export_select" id="json_export_select" value="json_export_select_stundenaufzeichnung" checked=""> Stundenaufzeichnung
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="json_export_select" id="json_export_select" value="json_export_select_firma"> Firma
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="json_export_select" id="json_export_select" value="json_export_select_arbeitnehmer"> Arbeitnehmer
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="json_export_select" id="json_export_select" value="json_export_select_rechnungsnummer"> Rechnungsnummer
+                    </label>
+                </div>
+                </div>
+                <div class="col-lg-12">
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <button class="btn btn-primary btn-block" type="submit" value="Daten als JSON exportieren"><i class="glyphicon glyphicon-download-alt"></i> Daten als JSON exportieren</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        Information: Derzeit sind keine Einträge vorhanden, daher kann im Moment kein Export erfolgen.
+    </div>
+{% endif %}
+{% endblock %}

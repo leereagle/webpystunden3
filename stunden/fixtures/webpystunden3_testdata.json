@@ -1,0 +1,108 @@
+[
+    {
+        "pk": 1,
+        "model": "stunden.firma",
+        "fields": {
+            "land": "Great Britain",
+            "name": "John Cleese",
+            "firma": "Monty Python",
+            "ort": "London",
+            "adresse": "Silly Walk Street 42",
+            "plz": "42424",
+            "uid": "UID: ATU00000000"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "stunden.firma",
+        "fields": {
+            "land": "Great Britain",
+            "name": "Eric Idle",
+            "firma": "Monty Python Music",
+            "ort": "London",
+            "adresse": "Look on The Street 7",
+            "plz": "42424",
+            "uid": "UID: ATU99999999"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "stunden.arbeitnehmer",
+        "fields": {
+            "bank_name": "Mein Bankinstitut",
+            "land": "\u00d6sterreich",
+            "uid": "UID: ATU42424242",
+            "bank_iban": "AT000000000000000000",
+            "ort": "Herrlich in Tirol",
+            "adresse": "Innsbruckerstra\u00dfe 42",
+            "plz": "6666",
+            "bank_bic": "XXXXXXXXXXX",
+            "name": "Michael Palin"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "stunden.stundenaufzeichnung",
+        "fields": {
+            "endzeit": "12:00:00",
+            "firma": 1,
+            "arbeitnehmer": 1,
+            "bezahlt": true,
+            "datum": "2012-09-22",
+            "protokoll": "Protokoll 1",
+            "startzeit": "10:00:00"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "stunden.stundenaufzeichnung",
+        "fields": {
+            "endzeit": "16:00:00",
+            "firma": 1,
+            "arbeitnehmer": 1,
+            "bezahlt": false,
+            "datum": "2012-09-22",
+            "protokoll": "Protokoll 2",
+            "startzeit": "13:00:00"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "stunden.stundenaufzeichnung",
+        "fields": {
+            "endzeit": "20:00:00",
+            "firma": 1,
+            "arbeitnehmer": 1,
+            "bezahlt": false,
+            "datum": "2012-09-22",
+            "protokoll": "Protokoll 3",
+            "startzeit": "17:00:00"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "stunden.stundenaufzeichnung",
+        "fields": {
+            "endzeit": "12:00:00",
+            "firma": 2,
+            "arbeitnehmer": 1,
+            "bezahlt": true,
+            "datum": "2012-09-23",
+            "protokoll": "Protokoll 4",
+            "startzeit": "09:00:00"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "stunden.stundenaufzeichnung",
+        "fields": {
+            "endzeit": "17:00:00",
+            "firma": 2,
+            "arbeitnehmer": 1,
+            "bezahlt": false,
+            "datum": "2012-09-23",
+            "protokoll": "Protokoll 5",
+            "startzeit": "13:00:00"
+        }
+    }
+]

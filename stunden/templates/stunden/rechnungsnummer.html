@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} - Rechnungsnummern{% endblock %}
+
+{% block content %}
+{% if rechnungsnummern %}
+<div class="row maintable" id="maintable">
+    <div class="col-lg-5 col-lg-offset-2">
+        <h3>Rechnungsnummern</h3>
+    </div>
+    <div class="col-lg-5 col-lg-offset-2" id="stundenaufzeichnung">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <tr>
+
+                    <th>Rechnungsnummer</th>
+                    <th>Datum</th>
+                </tr>
+                {% for row in rechnungsnummern %}
+                <tr>
+                    <td>{{row.rechnungsnummer}}</td>
+                    <td>{{row.rechnungsnummer_datum}}</td>
+                </tr>{% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="alert alert-info">
+                Information: Derzeit sind keine Einträge vorhanden.
+            </p>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
