@@ -575,13 +575,19 @@ def rechnung(request):
             response = HttpResponse(content_type="application/pdf")
             filename = rechnungs_nummer.encode("utf-8")
             filename = quote(filename)
-            url = "attachment; filename=\"Rechnung {}.pdf\"".format(filename)
+            url = "attachment; filename=\"Rechnung_{}_mfs_{}.pdf\"".format(
+                filename,
+                date.today().isoformat()
+            )
             response["Content-Disposition"] = url
 
             # Die Daten fürs PDF.
             data = {
                 "pdf_fileobject": response,
-                "pdf_title": "Rechnung {}".format(rechnungs_nummer),
+                "pdf_title": "Rechnung {} mfs {}".format(
+                    rechnungs_nummer,
+                    date.today().isoformat()
+                ),
                 "pdf_author": "Martin Fischer",
                 "pdf_subject": "Rechnung erstellt von webpystunden3",
                 "pdf_creator": "webpystunden3",
@@ -759,13 +765,19 @@ def rechnung_summe(request):
             response = HttpResponse(content_type="application/pdf")
             filename = rechnungs_nummer.encode("utf-8")
             filename = quote(filename)
-            url = "attachment; filename=\"Rechnung {}.pdf\"".format(filename)
+            url = "attachment; filename=\"Rechnung_{}_mfs_{}.pdf\"".format(
+                filename,
+                date.today().isoformat()
+            )
             response["Content-Disposition"] = url
 
             # Die Daten fürs PDF.
             data = {
                 "pdf_fileobject": response,
-                "pdf_title": "Rechnung {}".format(rechnungs_nummer),
+                "pdf_title": "Rechnung {} mfs {}".format(
+                    rechnungs_nummer,
+                    date.today().isoformat()
+                ),
                 "pdf_author": "Martin Fischer",
                 "pdf_subject": "Rechnung erstellt von webpystunden3",
                 "pdf_creator": "webpystunden3",
