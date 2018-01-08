@@ -952,9 +952,10 @@ class TestRechnung(TestCase):
         response = self.client.post(reverse("rechnung"), data)
         self.assertEqual(response.status_code, 200)
         # Prüft, ob ein PDF attachment mit dem richtigem filename existiert.
+
         self.assertEqual(
             response.get("Content-Disposition"),
-            'attachment; filename="Rechnung IT-0815.pdf"'
+            'attachment; filename="Rechnung_IT-0815_mfs_{}.pdf"'.format(date.today().isoformat())
         )
 
 
@@ -1001,7 +1002,7 @@ class TestRechnungSumme(TestCase):
         # Prüft, ob ein PDF attachment mit dem richtigem filename existiert.
         self.assertEqual(
             response.get("Content-Disposition"),
-            'attachment; filename="Rechnung IT-0815.pdf"'
+            'attachment; filename="Rechnung_IT-0815_mfs_{}.pdf"'.format(date.today().isoformat())
         )
 
 
